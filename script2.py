@@ -17,15 +17,15 @@ def procesar_y_guardar_xml_grande(archivo_xml, archivo_csv):
     ]
 
     campos_detectados = set([
-        'tipo', 'key', 'mdate', 'publtype',
-        'autores', 'atributos_autores',
-        'enlaces', 'atributos_ee', 'urls'
+    'tipo', 'key', 'mdate', 'publtype',
+    'autores', 'atributos_autores',
+    'enlaces', 'atributos_ee', 'urls'
     ])
+    campos_detectados.update(campos_comunes)
 
-    # Paso 1: detectar campos adicionales en un muestreo de entradas
-    print("Detectando campos...")
+    # Paso 1: detectar todos los campos en una pasada completa
+    print("Detectando campos en el archivo completo...")
     context = etree.iterparse(archivo_xml, events=("end",), encoding='ISO-8859-1', recover=True)
-    count = 0
     for event, elem in context:
         if elem.tag == 'dblp':
             continue
@@ -33,14 +33,12 @@ def procesar_y_guardar_xml_grande(archivo_xml, archivo_csv):
             campos_detectados.add(child.tag)
             if child.attrib:
                 campos_detectados.add(f"{child.tag}_attrs")
-        count += 1
-        if count > 1000:
-            break
         elem.clear()
         while elem.getprevious() is not None:
             del elem.getparent()[0]
     del context
 
+    # Crear lista ordenada de campos, asegurando que 'tipo' esté al inicio
     campos_ordenados = sorted(campos_detectados)
     if 'tipo' in campos_ordenados:
         campos_ordenados.remove('tipo')
@@ -59,12 +57,11 @@ def procesar_y_guardar_xml_grande(archivo_xml, archivo_csv):
                 continue
 
             tipo = elem.tag
-            entrada = {
-                'tipo': tipo,
-                'key': elem.attrib.get('key', ''),
-                'mdate': elem.attrib.get('mdate', ''),
-                'publtype': elem.attrib.get('publtype', '')
-            }
+            entrada = {k: '' for k in campos_ordenados}  # Inicializar con todas las columnas
+            entrada['tipo'] = elem.tag
+            entrada['key'] = elem.attrib.get('key', '')
+            entrada['mdate'] = elem.attrib.get('mdate', '')
+            entrada['publtype'] = elem.attrib.get('publtype', '')
 
             for campo in campos_comunes:
                 sub = elem.find(campo)
@@ -73,14 +70,12 @@ def procesar_y_guardar_xml_grande(archivo_xml, archivo_csv):
             autores = elem.findall('author')
             entrada['autores'] = '|'.join([a.text.strip() for a in autores if a.text])
             atributos_autores = [json.dumps({a.text.strip(): a.attrib}) for a in autores if a.attrib and a.text]
-            if atributos_autores:
-                entrada['atributos_autores'] = '|'.join(atributos_autores)
+            entrada['atributos_autores'] = '|'.join(atributos_autores) if atributos_autores else ''
 
             ees = elem.findall('ee')
             entrada['enlaces'] = '|'.join([e.text.strip() for e in ees if e.text])
             atributos_ee = [json.dumps({e.text.strip(): e.attrib}) for e in ees if e.attrib and e.text]
-            if atributos_ee:
-                entrada['atributos_ee'] = '|'.join(atributos_ee)
+            entrada['atributos_ee'] = '|'.join(atributos_ee) if atributos_ee else ''
 
             urls = elem.findall('url')
             entrada['urls'] = '|'.join([u.text.strip() for u in urls if u.text])
@@ -93,8 +88,7 @@ def procesar_y_guardar_xml_grande(archivo_xml, archivo_csv):
                     if sub.attrib:
                         entrada[f"{sub.tag}_attrs"] = json.dumps(sub.attrib)
 
-            entrada_filtrada = {k: entrada.get(k, '') for k in campos_ordenados}
-            writer.writerow(entrada_filtrada)
+            writer.writerow(entrada)
 
             elem.clear()
             while elem.getprevious() is not None:
