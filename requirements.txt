@@ -1,0 +1,6 @@
+matplotlib
+pandas
+seaborn
+beautifulsoup4
+lxml
+tqdm
