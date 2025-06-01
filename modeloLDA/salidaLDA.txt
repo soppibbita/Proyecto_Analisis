@@ -1,0 +1,615 @@
+PS C:\Users\tuki_\Desktop\UDEC\2025S1\AnalisisdeDatos\Proyecto> python modelo.py
+Verificando y descargando recursos de NLTK...
+[nltk_data] Downloading package stopwords to
+[nltk_data]     C:\Users\tuki_\AppData\Roaming\nltk_data...
+[nltk_data]   Unzipping corpora\stopwords.zip.
+Recurso 'stopwords' descargado.
+[nltk_data] Downloading package wordnet to
+[nltk_data]     C:\Users\tuki_\AppData\Roaming\nltk_data...
+Recurso 'wordnet' descargado.
+[nltk_data] Downloading package omw-1.4 to
+[nltk_data]     C:\Users\tuki_\AppData\Roaming\nltk_data...
+Recurso 'omw-1.4' descargado.
+Verificación y descarga de recursos de NLTK completada.
+Cargando el archivo CSV...
+Archivo CSV cargado correctamente.
+
+Últimas filas del DataFrame cargado:
+         type                key       mdate                                            authors  ... note  <cyfunction Entity at 0x00000213F35C8520> publnr publisher
+11575423  NaN  tr/tum/FKI-102-89  2023-12-10  [{'name': 'Eike Jessen', 'first name': 'Eike',...  ...  NaN                                        NaN    NaN       NaN
+11575424  NaN  tr/tum/TUM-I-9029  2023-12-10  [{'name': 'Werner Pohlmann', 'first name': 'We...  ...  NaN                                        NaN    NaN       NaN
+11575425  NaN  tr/tum/TUM-M-9009  2023-12-10  [{'name': 'Bernhard Reinmiedl', 'first name': ...  ...  NaN                                        NaN    NaN       NaN
+11575426  NaN  tr/tum/TUM-M-9202  2023-12-10  [{'name': 'Oswald Giering', 'first name': 'Osw...  ...  NaN                                        NaN    NaN       NaN
+11575427  NaN  tr/tum/TUM-M-9007  2023-12-10  [{'name': 'Hubert Kiechle', 'first name': 'Hub...  ...  NaN                                        NaN    NaN       NaN
+
+[5 rows x 24 columns]
+
+--- Análisis de Elementos Únicos por Tipo y Ejemplos ---
+
+Tipos de publicación únicos encontrados en df: ['incollection' 'book' 'proceedings' 'mastersthesis' 'article'
+ 'inproceedings' 'phdthesis' 'www' nan]
+
+----- Ejemplos para el Tipo: 'incollection' -----
+                                                   title                          booktitle         type   year
+                                             Curvedness. Computer Vision, A Reference Guide incollection 2014.0
+                          Transparency and Translucency. Computer Vision, A Reference Guide incollection 2014.0
+Surface Orientation Histogram (Discrete Version of EGI). Computer Vision, A Reference Guide incollection 2014.0
+                                    Appearance Scanning. Computer Vision, A Reference Guide incollection 2014.0
+                                   Image-Based Lighting. Computer Vision, A Reference Guide incollection 2014.0
+
+----- Ejemplos para el Tipo: 'book' -----
+                                             title                             booktitle type   year
+                Computer Vision, A Reference Guide    Computer Vision, A Reference Guide book 2014.0
+        Encyclopedia of Computational Neuroscience                                   NaN book 2014.0
+Encyclopedia of Cryptography and Security, 2nd Ed.                                   NaN book 2011.0
+         Encyclopedia of Cryptography and Security                                   NaN book 2005.0
+             Handbook of Visual Display Technology Handbook of Visual Display Technology book 2012.0
+
+----- Ejemplos para el Tipo: 'proceedings' -----
+                                                                                                              title
+             booktitle        type   year
+                                                                    Handbook of Medical and Healthcare Technologies
+                   NaN proceedings 2013.0
+                                                                       Handbook of Genetic Programming Applications
+                   NaN proceedings 2015.0
+                                        Intelligent Decision Making in Quality Management - Theory and Applications
+                   NaN proceedings 2016.0
+Philosophy and Theory of Artificial Intelligence, PT-AI 2011, Thessaloniki, Greece, October 3-4, 2011, Proceedings.
+                 PT-AI proceedings 2013.0
+                                          Applications and Practices in Ontology Design, Extraction, and Reasoning. Applications and Practices in Ontology Design, Extraction, and Reasoning proceedings 2020.0
+
+----- Ejemplos para el Tipo: 'mastersthesis' -----
+                                                                                                             title booktitle          type   year
+                                                Who's Who in the World Wide Web: Approaches to Name Disambiguation       NaN mastersthesis 2007.0
+Der Einfluss kleiner naturnaher Retentionsmanahmen in der Flche auf den Hochwasserabfluss - Kleinrckhaltebecken -.       NaN mastersthesis 2006.0
+                                                                    Efficient View Maintenance at Data Warehouses.       NaN mastersthesis 1997.0
+                                Regelbasierte Extraktion und asymmetrische Fusion bibliographischer Informationen.       NaN mastersthesis 2009.0
+                  Portierung des DBLP-Systems auf ein relationales Datenbanksystem und Evaluation der Performance.       NaN mastersthesis 2006.0
+
+----- Ejemplos para el Tipo: 'article' -----
+                                                           title booktitle    type   year
+                                           (was never published)       NaN article    NaN
+                                                         (error)       NaN article    NaN
+                                                               …       NaN article    NaN
+An interactive visualization framework for performance analysis.       NaN article 2015.0
+  Imitation Learning from Observation through Optimal Transport.       NaN article 2024.0
+
+----- Ejemplos para el Tipo: 'inproceedings' -----
+                                                                                     title booktitle          type   year
+                                            Practical Introspection as Inspiration for AI.     PT-AI inproceedings 2011.0
+C.S. Peirce and Artificial Intelligence: Historical Heritage and (New) Theoretical Stakes.     PT-AI inproceedings 2011.0
+                                                     Feasibility of Whole Brain Emulation.     PT-AI inproceedings 2011.0
+                                                                        Machine Mentality?     PT-AI inproceedings 2011.0
+                                                             Of (Zombie) Mice and Animats.     PT-AI inproceedings 2011.0
+
+----- Ejemplos para el Tipo: 'phdthesis' -----
+                                                                                                                                 title booktitle      type   year
+                                                                    Neural Generation of Textual Summaries from Knowledge Base Triples       NaN phdthesis 2020.0     
+Semantic Methods for Execution-level Business Process Modeling - Modeling Support Through Process Verification and Service Composition       NaN phdthesis 2009.0     
+                                                            An Inductive Logic Programming Approach to Statistical Relational Learning       NaN phdthesis 2005.0     
+                                          Robust Methods for Dense Monocular Non-Rigid 3D Reconstruction and Alignment of Point Clouds       NaN phdthesis 2020.0     
+                                                        Diensteintegrierende Kommunikationsnetze mit teilnehmerberprfbarem Datenschutz       NaN phdthesis 1990.0     
+
+----- Ejemplos para el Tipo: 'www' -----
+    title booktitle type  year
+Home Page       NaN  www   NaN
+Home Page       NaN  www   NaN
+Home Page       NaN  www   NaN
+Home Page       NaN  www   NaN
+Home Page       NaN  www   NaN
+
+----- Ejemplos para el Tipo: 'nan' -----
+No hay ejemplos disponibles para el tipo 'nan'.
+
+Conteo de tipos de publicación:
+type
+article          3824585
+www              3755844
+inproceedings    3662017
+phdthesis         142429
+incollection       70874
+proceedings        61397
+book               21006
+mastersthesis         27
+Name: count, dtype: int64
+
+--- Porcentaje de Valores Nulos en 'year' por 'type' ---
+
+Conteo de Nulos en 'year' por Tipo:
+type
+article                3
+book                   0
+incollection           0
+inproceedings          0
+mastersthesis          0
+phdthesis              0
+proceedings            0
+www              3755827
+Name: year, dtype: int64
+
+Total de Entradas por Tipo:
+type
+article          3824585
+book               21006
+incollection       70874
+inproceedings    3662017
+mastersthesis         27
+phdthesis         142429
+proceedings        61397
+www              3755844
+dtype: int64
+
+Porcentaje de Valores Nulos en 'year' por Tipo:
+type
+article            0.0%
+book               0.0%
+incollection       0.0%
+inproceedings      0.0%
+mastersthesis      0.0%
+phdthesis          0.0%
+proceedings        0.0%
+www              100.0%
+dtype: object
+
+Resumen Completo de Nulos en 'year' por Tipo:
+               Nulos_en_Year  Total_Entradas  Porcentaje_Nulos_Year
+type
+article                    3         3824585                    0.0
+book                       0           21006                    0.0
+incollection               0           70874                    0.0
+inproceedings              0         3662017                    0.0
+mastersthesis              0              27                    0.0
+phdthesis                  0          142429                    0.0
+proceedings                0           61397                    0.0
+www                  3755827         3755844                  100.0
+
+--- Análisis para el Tipo: 'www' ---
+Filas iniciales para el tipo 'www': 3755844
+Se eliminaron 1533 filas con título NaN para el tipo 'www'.
+Se eliminaron 3754294 filas con título 'Home Page' para el tipo 'www'.
+
+--- Conteo de Títulos Únicos para el Tipo: 'www' después de limpieza ---
+Número total de publicaciones de tipo 'www' después de limpieza: 17
+Número de títulos únicos para el tipo 'www': 17
+
+Algunos ejemplos de títulos únicos (primeros 20 después de limpieza):
+['XML-QL: A Query Language for XML', 'The XML Query Algebra', 'W3C: Extensible Markup Language (XML) 1.0 - first edition.', 'XML Query Requirements', 'XML Query Data 
+Model', 'XQuery: A Query Language for XML', 'XML Query Use Cases', 'W3C: Extensible Stylesheet Language (XSL)', 'W3C: Document Oject Model (DOM)', 'W3C: The w3c Query Language Workshop, December 1998, Boston, MA, USA', 'Internet Draft: Hypertext Transfer Protocol - HTTP/1.1', 'WfMC Standards: The Workflow Reference Model, Version 
+1.1.', 'The SGML/XML Web Page', 'Klaus Tschira Stiftung gemeinntzige GmbH, KTS', 'E. W. Dijkstra Archive: The manuscripts of Edsger W. Dijkstra 1930-2002', 'DBLP.uni-trier.de: Computer Science Bibliography', 'ACM SIGMOD Contribution Award 2003 Acceptance Speech']
+
+--- Conteo y Porcentaje de Nulos en 'year' para el Tipo Específico (después de limpieza de títulos) ---
+Conteo de Nulos en 'year' para 'www': 0
+Porcentaje de Nulos en 'year' para 'www': 0.0%
+
+--- Primeras 10 filas del DataFrame filtrado y limpiado ---
+         type                               key       mdate
+                                                                                         authors                                                                 title    year journal booktitle pages volume  url                                                    ee crossref isbn                editor cite number stream month cdrom 
+note  <cyfunction Entity at 0x00000213F35C8520> publnr publisher
+11353883  www         www/org/w3/TR/NOTE-xml-ql  2019-05-27  [{"name": "Alin Deutsch", "orcid": ""}, {"name": "Mary F. Fernandez", "orcid": ""}, {"name": "Daniela Florescu", "orcid": ""}, {"name": "Alon Y. Levy", "orcid": ""}, {"name": "Dan Suciu", "orcid": ""}]                                      XML-QL: A Query Language for XML  1998.0     NaN       NaN   NaN    NaN  NaN                     http://www.w3.org/TR/NOTE-xml-ql/      NaN  NaN                   NaN  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353884  www       www/org/w3/TR/query-algebra  2019-05-27
+                                                                                              []                                                 The XML Query Algebra  2001.0     NaN       NaN   NaN    NaN  NaN  http://www.w3.org/TR/2000/WD-query-algebra-20001204/      NaN  NaN      Peter Fankhauser  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353885  www             www/org/w3/TR/REC-xml  2019-05-27
+                                                                                              []            W3C: Extensible Markup Language (XML) 1.0 - first edition.  1998.0     NaN       NaN   NaN    NaN  NaN                            https://www.w3.org/TR/xml/      NaN  NaN                   NaN  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353886  www        www/org/w3/TR/xmlquery-req  2019-05-27
+                                                                                              []                                                XML Query Requirements  2001.0     NaN       NaN   NaN    NaN  NaN                     http://www.w3.org/TR/xmlquery-req      NaN  NaN  Donald D. Chamberlin  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353887  www     www/org/w3/TR/query-datamodel  2019-05-27
+                                                                                              []                                                  XML Query Data Model  2001.0     NaN       NaN   NaN    NaN  NaN                  http://www.w3.org/TR/query-datamodel      NaN  NaN     Mary F. Fernandez  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353888  www              www/org/w3/TR/xquery  2019-05-27
+                                                                                              []                                      XQuery: A Query Language for XML  2001.0     NaN       NaN   NaN    NaN  NaN                           http://www.w3.org/TR/xquery      NaN  NaN  Donald D. Chamberlin  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353889  www  www/org/w3/TR/xmlquery-use-cases  2019-05-27
+                                                                                              []                                                   XML Query Use Cases  2001.0     NaN       NaN   NaN    NaN  NaN               http://www.w3.org/TR/xmlquery-use-cases      NaN  NaN  Donald D. Chamberlin  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353890  www              www/org/w3/style-xsl  2019-07-10
+                                                                                              []                             W3C: Extensible Stylesheet Language (XSL)  2001.0     NaN       NaN   NaN    NaN  NaN                          http://www.w3.org/Style/XSL/      NaN  NaN                   NaN  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353891  www                    www/org/w3/dom  2019-07-10
+                                                                                              []                                       W3C: Document Oject Model (DOM)  1997.0     NaN       NaN   NaN    NaN  NaN                                http://www.w3.org/DOM/      NaN  NaN                   NaN  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+11353892  www                   www/org/w3/ql98  2019-07-10
+                                                                                              []  W3C: The w3c Query Language Workshop, December 1998, Boston, MA, USA  1998.0     NaN       NaN   NaN    NaN  NaN                      http://www.w3.org/TandS/QL/QL98/      NaN  NaN                   NaN  NaN    NaN    NaN   NaN   NaN 
+ NaN                                        NaN    NaN       NaN
+
+Verificando y manejando valores nulos antes de la limpieza principal...
+type                                            37249
+key                                                 0
+mdate                                               0
+authors                                             0
+title                                            7240
+year                                          3755830
+journal                                       7713594
+booktitle                                     7779855
+pages                                         5009742
+volume                                        7681295
+url                                           3706902
+ee                                            3936971
+crossref                                      7843936
+isbn                                         11496260
+editor                                       11527446
+cite                                         11566957
+number                                       11546853
+stream                                       11574339
+month                                        11573522
+cdrom                                        11575424
+note                                         11575192
+<cyfunction Entity at 0x00000213F35C8520>    11575428
+publnr                                       11575418
+publisher                                    11575365
+dtype: int64
+Filas después de eliminar nulos en 'title': 11568188
+Filas después de eliminar nulos en 'year': 7813891
+
+--- Eliminando filas de tipo 'book' con títulos coincidentes ---
+Total de elementos de tipo 'book' en el DataFrame antes de la eliminación: 21005
+
+Número de títulos únicos de tipo 'book' (después de limpieza): 20877
+Número de booktitles únicos en todo el DataFrame (después de limpieza): 17886
+
+Se eliminaron 1447 filas de tipo 'book' que tuvieron coincidencia de título.
+Total de elementos de tipo 'book' en el DataFrame después de la eliminación: 19558
+
+Ejemplos de los títulos limpios que causaron la coincidencia:
+- effective databases for text document management
+- das ist informatik
+- frontiers of intelligent autonomous systems
+- encyclopedia of computer graphics and games
+- ubiquitous music
+- knowledge graphs and big data processing
+- multi agent systems for traffic and transportation engineering
+- on the power of fuzzy markup language
+- new horizons for fuzzy logic neural networks and metaheuristics
+- smart micro grid systems security and privacy
+
+Verificando valores nulos después de la limpieza y eliminación de columnas:
+type                                           37249
+authors                                            0
+title                                              0
+year                                               0
+journal                                      3955188
+booktitle                                    4018428
+number                                       7783869
+stream                                       7811355
+month                                        7810538
+cdrom                                        7812440
+note                                         7812208
+<cyfunction Entity at 0x00000213F35C8520>    7812444
+publnr                                       7812434
+publisher                                    7812381
+dtype: int64
+
+Primeras filas del DataFrame limpio y reducido:
+           type                                       authors  ... publnr  publisher
+0  incollection                                            []  ...    NaN        NaN
+1  incollection  [{"name": "Manish Singh 0001", "orcid": ""}]  ...    NaN        NaN
+2  incollection                                            []  ...    NaN        NaN
+3  incollection                                            []  ...    NaN        NaN
+4  incollection     [{"name": "Tien-Tsin Wong", "orcid": ""}]  ...    NaN        NaN
+
+[5 rows x 14 columns]
+
+--- Paso 1.5 (Revisado con Limpieza Adicional de Títulos): Preparación Inteligente del Contenido para Modelado de Temas ---
+Filas iniciales en df_clean antes de deduplicación inteligente: 7812444
+Filas en df_for_analysis (después de deduplicación inteligente): 7744005
+
+Primeras 10 filas de df_for_analysis (contenido y IDs):
+              type                                                                title                                                booktitle
+                     content_for_topic_modeling  year                                         unique_publication_id
+0     incollection                                                          Curvedness.                       Computer Vision, A Reference Guide
+             Computer Vision, A Reference Guide  2014                       Computer Vision, A Reference Guide_2014
+535   incollection                                        Population Encoding/Decoding.               Encyclopedia of Computational Neuroscience
+     Encyclopedia of Computational Neuroscience  2014               Encyclopedia of Computational Neuroscience_2014
+1110  incollection                                      Substitutions and permutations.                Encyclopedia of Cryptography and Security
+      Encyclopedia of Cryptography and Security  2005                Encyclopedia of Cryptography and Security_2005
+1111  incollection                                                       Vernam Cipher.      Encyclopedia of Cryptography and Security (2nd Ed.)                  Encyclopedia of Cryptography and Security (2nd Ed.)  2011      Encyclopedia of Cryptography and Security (2nd Ed.)_2011
+2746  incollection                                            Digital Image Operations.                    Handbook of Visual Display Technology
+          Handbook of Visual Display Technology  2012                    Handbook of Visual Display Technology_2012
+2913  incollection                                Model Checking Probabilistic Systems.                               Handbook of Model Checking
+                     Handbook of Model Checking  2018                               Handbook of Model Checking_2018
+2946  incollection                Social Influence and Computer Mediated Communication.  Handbook of Research on Computer Mediated Communication              Handbook of Research on Computer Mediated Communication  2008  Handbook of Research on Computer Mediated Communication_2008
+3001          book  Handbook of Research on Computer Mediated Communication (2 Volumes)  Handbook of Research on Computer Mediated Communication  Handbook of Research on Computer Mediated Communication (2 Volumes)  2008                                                          3001
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+      Encyclopedia of Cryptography and Security  2005                Encyclopedia of Cryptography and Security_2005
+1111  incollection                                                       Vernam Cipher.      Encyclopedia of Cryptography and Security (2nd Ed.)                  Encyclopedia of Cryptography and Security (2nd Ed.)  2011      Encyclopedia of Cryptography and Security (2nd Ed.)_2011
+2746  incollection                                            Digital Image Operations.                    Handbook of Visual Display Technology
+          Handbook of Visual Display Technology  2012                    Handbook of Visual Display Technology_2012
+2913  incollection                                Model Checking Probabilistic Systems.                               Handbook of Model Checking
+                     Handbook of Model Checking  2018                               Handbook of Model Checking_2018
+2946  incollection                Social Influence and Computer Mediated Communication.  Handbook of Research on Computer Mediated Communication              Handbook of Research on Computer Mediated Communication  2008  Handbook of Research on Computer Mediated Communication_2008
+3001          book  Handbook of Research on Computer Mediated Communication (2 Volumes)  Handbook of Research on Computer Mediated Communication  Handbook of Research on Computer Mediated Communication (2 Volumes)  2008                                                          3001
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+1111  incollection                                                       Vernam Cipher.      Encyclopedia of Cryptography and Security (2nd Ed.)                  Encyclopedia of Cryptography and Security (2nd Ed.)  2011      Encyclopedia of Cryptography and Security (2nd Ed.)_2011
+2746  incollection                                            Digital Image Operations.                    Handbook of Visual Display Technology
+          Handbook of Visual Display Technology  2012                    Handbook of Visual Display Technology_2012
+2913  incollection                                Model Checking Probabilistic Systems.                               Handbook of Model Checking
+                     Handbook of Model Checking  2018                               Handbook of Model Checking_2018
+2946  incollection                Social Influence and Computer Mediated Communication.  Handbook of Research on Computer Mediated Communication              Handbook of Research on Computer Mediated Communication  2008  Handbook of Research on Computer Mediated Communication_2008
+3001          book  Handbook of Research on Computer Mediated Communication (2 Volumes)  Handbook of Research on Computer Mediated Communication  Handbook of Research on Computer Mediated Communication (2 Volumes)  2008                                                          3001
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+2746  incollection                                            Digital Image Operations.                    Handbook of Visual Display Technology
+          Handbook of Visual Display Technology  2012                    Handbook of Visual Display Technology_2012
+2913  incollection                                Model Checking Probabilistic Systems.                               Handbook of Model Checking
+                     Handbook of Model Checking  2018                               Handbook of Model Checking_2018
+2946  incollection                Social Influence and Computer Mediated Communication.  Handbook of Research on Computer Mediated Communication              Handbook of Research on Computer Mediated Communication  2008  Handbook of Research on Computer Mediated Communication_2008
+3001          book  Handbook of Research on Computer Mediated Communication (2 Volumes)  Handbook of Research on Computer Mediated Communication  Handbook of Research on Computer Mediated Communication (2 Volumes)  2008                                                          3001
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+                     Handbook of Model Checking  2018                               Handbook of Model Checking_2018
+2946  incollection                Social Influence and Computer Mediated Communication.  Handbook of Research on Computer Mediated Communication              Handbook of Research on Computer Mediated Communication  2008  Handbook of Research on Computer Mediated Communication_2008
+3001          book  Handbook of Research on Computer Mediated Communication (2 Volumes)  Handbook of Research on Computer Mediated Communication  Handbook of Research on Computer Mediated Communication (2 Volumes)  2008                                                          3001
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+ of Research on Computer Mediated Communication  2008  Handbook of Research on Computer Mediated Communication_2008
+3001          book  Handbook of Research on Computer Mediated Communication (2 Volumes)  Handbook of Research on Computer Mediated Communication  Handbook of Research on Computer Mediated Communication (2 Volumes)  2008                                                          3001
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+3001          book  Handbook of Research on Computer Mediated Communication (2 Volumes)  Handbook of Research on Computer Mediated Communication  Handbook of Research on Computer Mediated Communication (2 Volumes)  2008                                                          3001
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+3016  incollection                                   Parsing of Context-Free Languages.                         Handbook of Formal Languages (2)
+               Handbook of Formal Languages (2)  1997                         Handbook of Formal Languages (2)_1997
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+3017  incollection                                      Languages, Automata, and Logic.                         Handbook of Formal Languages (3)
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+Filas en df_for_analysis (después de procesamiento de texto y eliminación de nulos/vacíos): 7736620
+               Handbook of Formal Languages (3)  1997                         Handbook of Formal Languages (3)_1997
+
+Filas en df_for_analysis (después de procesamiento de texto y eliminación de nulos/vacíos): 7736620
+
+
+Filas en df_for_analysis (después de procesamiento de texto y eliminación de nulos/vacíos): 7736620
+
+Primeras filas del DataFrame de análisis con contenido limpio y procesado:
+              type                           content_for_topic_modeling                        processed_content
+Filas en df_for_analysis (después de procesamiento de texto y eliminación de nulos/vacíos): 7736620
+
+Primeras filas del DataFrame de análisis con contenido limpio y procesado:
+              type                           content_for_topic_modeling                        processed_content
+
+Primeras filas del DataFrame de análisis con contenido limpio y procesado:
+              type                           content_for_topic_modeling                        processed_content
+Primeras filas del DataFrame de análisis con contenido limpio y procesado:
+              type                           content_for_topic_modeling                        processed_content
+0     incollection                   Computer Vision, A Reference Guide          computer vision reference guide
+535   incollection           Encyclopedia of Computational Neuroscience  encyclopedia computational neuroscience
+535   incollection           Encyclopedia of Computational Neuroscience  encyclopedia computational neuroscience
+1110  incollection            Encyclopedia of Cryptography and Security       encyclopedia cryptography security
+1111  incollection  Encyclopedia of Cryptography and Security (2nd Ed.)       encyclopedia cryptography security
+1110  incollection            Encyclopedia of Cryptography and Security       encyclopedia cryptography security
+1111  incollection  Encyclopedia of Cryptography and Security (2nd Ed.)       encyclopedia cryptography security
+1111  incollection  Encyclopedia of Cryptography and Security (2nd Ed.)       encyclopedia cryptography security
+2746  incollection                Handbook of Visual Display Technology       handbook visual display technology
+
+2746  incollection                Handbook of Visual Display Technology       handbook visual display technology
+
+
+DataFrame procesado guardado en 'dblp_processed_for_analysis.csv'
+
+Dimensiones de la matriz TF-IDF con n-gramas: (7736620, 5000)
+
+Primeras 100 características (palabras/n-gramas) detectadas:
+['100' '2000' '2001' '2002' '2003' '2004' '2005' '2006' '2007' '2008'  
+ '2009' '2010' '2011' '2012' '2013' '2014' '2015' '2016' '2017' '2018' 
+ '2019' '2020' '2021' '2022' '2023' '2024' '264' '264 avc' '2nd' '360' 
+ '4th' '5th' '6th' '802' 'ability' 'abnormal' 'absolute' 'abstract'    
+DataFrame procesado guardado en 'dblp_processed_for_analysis.csv'
+
+Dimensiones de la matriz TF-IDF con n-gramas: (7736620, 5000)
+
+Primeras 100 características (palabras/n-gramas) detectadas:
+['100' '2000' '2001' '2002' '2003' '2004' '2005' '2006' '2007' '2008'
+ '2009' '2010' '2011' '2012' '2013' '2014' '2015' '2016' '2017' '2018'
+ '2019' '2020' '2021' '2022' '2023' '2024' '264' '264 avc' '2nd' '360'
+ '4th' '5th' '6th' '802' 'ability' 'abnormal' 'absolute' 'abstract'
+ 'abstraction' 'academic' 'accelerated' 'accelerating' 'acceleration'
+ 'accelerator' 'accelerometer' 'acceptance' 'access' 'access control'
+ 'access network' 'accessibility' 'accessible' 'accident' 'account'
+ 'accounting' 'accuracy' 'accurate' 'achieve' 'achievement' 'achieving'
+ 'acid' 'acm' 'acoustic' 'acquisition' 'across' 'act' 'action'
+ 'action recognition' 'activation' 'active' 'active contour'
+DataFrame procesado guardado en 'dblp_processed_for_analysis.csv'
+
+Dimensiones de la matriz TF-IDF con n-gramas: (7736620, 5000)
+
+Primeras 100 características (palabras/n-gramas) detectadas:
+['100' '2000' '2001' '2002' '2003' '2004' '2005' '2006' '2007' '2008'
+ '2009' '2010' '2011' '2012' '2013' '2014' '2015' '2016' '2017' '2018'
+ '2019' '2020' '2021' '2022' '2023' '2024' '264' '264 avc' '2nd' '360'
+ '4th' '5th' '6th' '802' 'ability' 'abnormal' 'absolute' 'abstract'
+['100' '2000' '2001' '2002' '2003' '2004' '2005' '2006' '2007' '2008'
+ '2009' '2010' '2011' '2012' '2013' '2014' '2015' '2016' '2017' '2018'
+ '2019' '2020' '2021' '2022' '2023' '2024' '264' '264 avc' '2nd' '360'
+ '4th' '5th' '6th' '802' 'ability' 'abnormal' 'absolute' 'abstract'
+ '4th' '5th' '6th' '802' 'ability' 'abnormal' 'absolute' 'abstract'
+ 'abstraction' 'academic' 'accelerated' 'accelerating' 'acceleration'
+ 'accelerator' 'accelerometer' 'acceptance' 'access' 'access control'
+ 'access network' 'accessibility' 'accessible' 'accident' 'account'
+ 'accounting' 'accuracy' 'accurate' 'achieve' 'achievement' 'achieving'
+ 'access network' 'accessibility' 'accessible' 'accident' 'account'
+ 'accounting' 'accuracy' 'accurate' 'achieve' 'achievement' 'achieving'
+ 'accounting' 'accuracy' 'accurate' 'achieve' 'achievement' 'achieving'
+ 'acid' 'acm' 'acoustic' 'acquisition' 'across' 'act' 'action'
+ 'action recognition' 'activation' 'active' 'active contour'
+ 'active learning' 'activity' 'activity recognition' 'actor' 'actuated'
+ 'actuator' 'acute' 'acyclic' 'ada' 'adaptable' 'adaptation' 'adapted'
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adaptive learning' 'adc' 'adder' 'adding' 'addition' 'additive'
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adaptive learning' 'adc' 'adder' 'adding' 'addition' 'additive'
+ 'address' 'addressing' 'adjustment' 'administration' 'admission'
+ 'admission control' 'adolescent' 'adoption']
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adaptive learning' 'adc' 'adder' 'adding' 'addition' 'additive'
+ 'address' 'addressing' 'adjustment' 'administration' 'admission'
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adaptive learning' 'adc' 'adder' 'adding' 'addition' 'additive'
+ 'address' 'addressing' 'adjustment' 'administration' 'admission'
+ 'admission control' 'adolescent' 'adoption']
+
+Entrenando el modelo LDA con 10 temas...
+
+
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adaptive learning' 'adc' 'adder' 'adding' 'addition' 'additive'
+ 'address' 'addressing' 'adjustment' 'administration' 'admission'
+ 'admission control' 'adolescent' 'adoption']
+
+Entrenando el modelo LDA con 10 temas...
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adaptive learning' 'adc' 'adder' 'adding' 'addition' 'additive'
+ 'address' 'addressing' 'adjustment' 'administration' 'admission'
+ 'adapting' 'adaptive' 'adaptive control' 'adaptive fuzzy'
+ 'adaptive learning' 'adc' 'adder' 'adding' 'addition' 'additive'
+ 'address' 'addressing' 'adjustment' 'administration' 'admission'
+ 'admission control' 'adolescent' 'adoption']
+
+Entrenando el modelo LDA con 10 temas...
+Modelo LDA entrenado.
+
+--- Top 15 palabras por Tema ---
+Tema #0: learning neural deep network neural network machine human deep learning using machine learning de robot based reinforcement matrix        
+Tema #1: image code optimal estimation based process study space quantum using method segmentation data case text
+Tema #2: und feature der software structure von visual state zur environment attack object virtual novel property
+Tema #3: graph control adaptive via optimization algorithm dynamic programming driven logic diffusion robust error vehicle inference
+Tema #4: video effect identification random source aware task channel energy system product fault testing filter iot
+Tema #5: network service framework wireless solution fast semantic web architecture survey classification based generation approximation internet  
+Tema #6: language non model game problem language model stochastic distribution complexity equation transformer vision differential secure computer
+Tema #8: linear two set order nonlinear analysis tree based prediction model method scheduling network simulation number
+Tema #9: level free constraint local implementation power self reconstruction event dimensional parallel matching synthesis sampling design
+------------------------------
+
+--- Distribución de Temas Dominantes ---
+dominant_topic
+0     907803
+1    1546219
+2     603993
+3     650926
+4     637891
+5     797093
+6     553698
+7     673477
+8     754954
+9     610566
+Name: count, dtype: int64
+C:\Users\tuki_\Desktop\UDEC\2025S1\AnalisisdeDatos\Proyecto\modelo.py:453: FutureWarning:
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.                                                                                                                                      he same effect.  
+
+  sns.barplot(x=topic_counts.index, y=topic_counts.values, palette='viridis')
+
+--- Ejemplos de Títulos por Tema Dominante ---
+
+Publicaciones del Tema #0:
+                         content_for_topic_modeling  year
+          Encyclopedia of Cryptography and Security  2005
+Encyclopedia of Cryptography and Security (2nd Ed.)  2011
+       Data Mining and Knowledge Discovery Handbook  2010
+                   Encyclopedia of Machine Learning  2010
+   Encyclopedia of Machine Learning and Data Mining  2017
+
+Publicaciones del Tema #1:
+                           content_for_topic_modeling  year
+      Handbook of Medical and Healthcare Technologies  2013
+      Handbook of Medical and Healthcare Technologies  2013
+Handbook of Algorithms for Physical Design Automation  2008
+                      Handbook of Mobile Data Privacy  2018
+                               Handbook of Automation  2009
+
+Publicaciones del Tema #2:
+                  content_for_topic_modeling  year
+       Handbook of Visual Display Technology  2012
+        Encyclopedia of Software Engineering  2010
+                 Taschenbuch der Algorithmen  2008
+Handbook of Data Structures and Applications  2004
+   Handbook of Virtual Environments, 2nd ed.  2014
+
+Publicaciones del Tema #3:
+                 content_for_topic_modeling  year
+                 Encyclopedia of Algorithms  2008
+                 Encyclopedia of Algorithms  2016
+  Encyclopedia of Algorithms - 2016 Edition  2016
+  Encyclopedia of Algorithms - 2008 Edition  2008
+Handbook of Graph Drawing and Visualization  2013
+
+Publicaciones del Tema #4:
+                        content_for_topic_modeling  year
+      Handbook of Energy-Aware and Green Computing  2012
+   Handbook of Financial Cryptography and Security  2010
+ Handbook of Soft Computing for Video Surveillance  2012
+Handbook on Soft Computing for Video Surveillance.  2012
+               Handbook of Ambient Assisted Living  2012
+
+Publicaciones del Tema #5:
+                                         content_for_topic_modeling  year
+                 Encyclopedia of Wireless and Mobile Communications  2008
+                                      The Universal Access Handbook  2009
+            Handbook of Approximation Algorithms and Metaheuristics  2007
+                  Information Security Management Handbook, 6th ed.  2007
+Handbook of Algorithms for Wireless Networking and Mobile Computing  2005
+
+Publicaciones del Tema #6:
+        content_for_topic_modeling  year
+Computer Vision, A Reference Guide  2014
+        Handbook of Model Checking  2018
+  Handbook of Formal Languages (2)  1997
+  Handbook of Formal Languages (3)  1997
+  Handbook of Formal Languages (1)  1997
+
+Publicaciones del Tema #7:
+                                         content_for_topic_modeling  year
+            Handbook of Research on Computer Mediated Communication  2008
+Handbook of Research on Computer Mediated Communication (2 Volumes)  2008
+                              Encyclopedia of Information Assurance  2011
+                 Handbook of Information and Communication Security  2010
+                                Encyclopedia of Information Systems  2002
+
+Publicaciones del Tema #8:
+                                                          content_for_topic_modeling  year
+Handbook of Formal Languages, Volume 2. Linear Modeling: Background and Application.  1997
+                                      Handbook of Science and Technology Convergence  2016
+                          Modeling and Simulation-Based Systems Engineering Handbook  2014
+                                                              Handbook of Scheduling  2004
+                                                           Mobile Computing Handbook  2004
+
+                                content_for_topic_modeling  year
+                Encyclopedia of Computational Neuroscience  2014
+ Handbook of Elliptic and Hyperelliptic Curve Cryptography  2005
+                       Handbook of Dynamic System Modeling  2007
+                            Handbook of Parallel Computing  2007
+Handbook of Mixed Membership Models and Their Applications  2014
+
+--- Tendencias de Temas a lo largo del Tiempo ---
+
+Modelado de temas y análisis de tendencias completado. Los gráficos han sido guardados.
