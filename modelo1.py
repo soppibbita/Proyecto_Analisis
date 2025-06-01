@@ -398,7 +398,7 @@ print(feature_names[:100])
 #      Esto puede ser un enfoque práctico.
 
 # Número de categorías (clusters) a descubrir. Ajusta este valor.
-num_clusters = 10 # Empieza con 10, pero ¡experimenta mucho aquí!
+num_clusters = 10 # Empieza con 10
 
 print(f"\nEntrenando el modelo MiniBatchKMeans con {num_clusters} categorías (clusters)...")
 kmeans_model = MiniBatchKMeans(
